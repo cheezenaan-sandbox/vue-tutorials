@@ -7,10 +7,22 @@ Vue.config.productionTip = false;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  data: {
+    kumiko: {
+      name: 'Kumiko Oumae',
+      age: '15',
+    },
+    asuka: {
+      name: 'Asuka Tanaka',
+      age: '17',
+    },
+  },
   template: `
   <div>
-    <h1>Hi!</h1>
-    <h2>Sound! Euphonium</h2>
+    <h2>Hello, {{kumiko.name}}</h2>
+    <h2>Age: {{kumiko.age}} </h2>
+    <h2>Hello, {{asuka.name}}</h2>
+    <h2>Age: {{asuka.age}} </h2>
   </div>
   `,
 });
