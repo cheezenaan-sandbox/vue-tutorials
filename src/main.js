@@ -9,20 +9,33 @@ new Vue({
   el: '#app',
   data: {
     kumiko: {
-      name: 'Kumiko Oumae',
-      age: '15',
+      first: 'Kumiko',
+      last: 'Oumae',
+      age: 15,
     },
     asuka: {
-      name: 'Asuka Tanaka',
-      age: '17',
+      first: 'Asuka',
+      last: 'tanaka',
+      age: 17,
+    },
+  },
+  computed: {
+    kumikoFullName() {
+      return `${this.kumiko.first} ${this.kumiko.last}`;
+    },
+    asukaFullName() {
+      return `${this.asuka.first} ${this.asuka.last}`;
+    },
+    asukaAgeInOneYear() {
+      return this.asuka.age + 1;
     },
   },
   template: `
   <div>
-    <h2>Hello, {{kumiko.name}}</h2>
+    <h2>Hello, {{kumikoFullName}}</h2>
     <h2>Age: {{kumiko.age}} </h2>
-    <h2>Hello, {{asuka.name}}</h2>
-    <h2>Age: {{asuka.age}} </h2>
+    <h2>Hello, {{asukaFullName}}</h2>
+    <h2>Age: {{asukaAgeInOneYear}} </h2>
   </div>
   `,
 });
