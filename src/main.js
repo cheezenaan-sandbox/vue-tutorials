@@ -20,22 +20,24 @@ new Vue({
     },
   },
   computed: {
-    kumikoFullName() {
-      return `${this.kumiko.first} ${this.kumiko.last}`;
-    },
-    asukaFullName() {
-      return `${this.asuka.first} ${this.asuka.last}`;
-    },
     asukaAgeInOneYear() {
       return this.asuka.age + 1;
     },
   },
+  filters: {
+    ageInOneYear(user) {
+      return user.age + 1;
+    },
+    fullName(user) {
+      return `${user.first} ${user.last}`;
+    },
+  },
   template: `
   <div>
-    <h2>Hello, {{kumikoFullName}}</h2>
-    <h2>Age: {{kumiko.age}} </h2>
-    <h2>Hello, {{asukaFullName}}</h2>
-    <h2>Age: {{asukaAgeInOneYear}} </h2>
+    <h2>Hello, {{kumiko | fullName}}</h2>
+    <h2>Age: {{kumiko | ageInOneYear}} </h2>
+    <h2>Hello, {{asuka | fullName}}</h2>
+    <h2>Age: {{asuka |  ageInOneYear}} </h2>
   </div>
   `,
 });
