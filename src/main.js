@@ -5,7 +5,7 @@ import Vue from 'vue';
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
-new Vue({
+const app = new Vue({
   el: '#app',
   data: {
     friends: [
@@ -52,3 +52,5 @@ new Vue({
     </div>
     `,
 });
+
+export { app };
