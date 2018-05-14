@@ -19,11 +19,6 @@ new Vue({
       age: 17,
     },
   },
-  computed: {
-    asukaAgeInOneYear() {
-      return this.asuka.age + 1;
-    },
-  },
   filters: {
     ageInOneYear(user) {
       return user.age + 1;
