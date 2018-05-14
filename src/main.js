@@ -8,36 +8,47 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   data: {
-    kumiko: {
-      first: 'Kumiko',
-      last: 'Oumae',
-      age: 15,
-    },
-    asuka: {
-      first: 'Asuka',
-      last: 'tanaka',
-      age: 17,
-    },
-  },
-  computed: {
-    asukaAgeInOneYear() {
-      return this.asuka.age + 1;
-    },
+    friends: [
+      {
+        first: 'Kumiko',
+        last: 'Oumae',
+        age: 15,
+      },
+      {
+        first: 'Asuka',
+        last: 'tanaka',
+        age: 17,
+      },
+    ],
   },
   filters: {
-    ageInOneYear(user) {
-      return user.age + 1;
+    ageInOneYear(friend) {
+      return friend.age + 1;
     },
-    fullName(user) {
-      return `${user.first} ${user.last}`;
+    fullName(friend) {
+      return `${friend.first} ${friend.last}`;
     },
   },
+  /* eslint-disable */
+  methods: {
+    incrementAge(friend) {
+      friend.age += 1;
+    },
+    decrementAge(friend) {
+      friend.age -= 1;
+    },
+  },
+  /* eslint-disable */
   template: `
-  <div>
-    <h2>Hello, {{kumiko | fullName}}</h2>
-    <h2>Age: {{kumiko | ageInOneYear}} </h2>
-    <h2>Hello, {{asuka | fullName}}</h2>
-    <h2>Age: {{asuka |  ageInOneYear}} </h2>
-  </div>
-  `,
+    <div>
+      <h2 v-for="friend in friends">
+        <h4>{{friend | fullName}}</h4>
+        <h5>age: {{friend | ageInOneYear}}</h5>
+        <button v-on:click="incrementAge(friend)">+</button>
+        <button v-on:click="decrementAge(friend)">-</button>
+        <input v-model="friend.first"/>
+        <input v-model="friend.last"/>
+      </h2>
+    </div>
+    `,
 });
