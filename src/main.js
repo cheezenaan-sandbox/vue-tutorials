@@ -8,11 +8,19 @@ Vue.config.productionTip = false;
 const app = new Vue({
   el: '#app',
   data: {
-    friends: ['Kumiko', 'Asuka'],
+    friends: [],
+  },
+  mounted() {
+    fetch('http://rest.learncode.academy/api/vuetutorial/friends')
+      .then(response => response.json())
+      .then(data => {
+        this.friends = data;
+      });
+    console.log('mounted!!'); // eslint-disable-line
   },
   template: `
     <div>
-    <li v-for="friend in friends">{{friend}}</li>
+    <li v-for="friend in friends">{{friend.name}}</li>
     </div>
     `,
 });
